@@ -1,12 +1,12 @@
 export default class Explosion{
   constructor(x, y){
-    this.x = x
-    this.y = y
-
     this.spriteWidth = 200
     this.spriteHeight = 179
     this.width = this.spriteWidth * 0.5
     this.height = this.spriteHeight * 0.5
+
+    this.x = x - this.width * 0.5
+    this.y = y - this.height * 0.5
 
     this.img = new Image()
     this.img.src = '../assets/boom.png'
