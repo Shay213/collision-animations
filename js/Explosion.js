@@ -12,7 +12,7 @@ export default class Explosion{
     this.img.src = '../assets/boom.png'
     this.sound = new Audio()
     this.sound.src = '../assets/boom.wav'
-    this.sound.volume = 0.3
+    this.sound.volume = 0.2
 
     this.frame = 0
     this.gameFrame = 0
