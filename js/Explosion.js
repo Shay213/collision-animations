@@ -10,6 +10,9 @@ export default class Explosion{
 
     this.img = new Image()
     this.img.src = '../assets/boom.png'
+    this.sound = new Audio()
+    this.sound.src = '../assets/boom.wav'
+    this.sound.volume = 0.3
 
     this.frame = 0
     this.gameFrame = 0
@@ -21,6 +24,7 @@ export default class Explosion{
   }
 
   update(){
+    if(this.frame === 0) this.sound.play()
     this.gameFrame++
     if(this.gameFrame % 5 === 0){
       this.frame++
