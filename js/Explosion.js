@@ -15,10 +15,14 @@ export default class Explosion{
     this.gameFrame = 0
   }
 
+  isAnimationDone(){
+    return this.frame > 5
+  }
+
   update(){
     this.gameFrame++
     if(this.gameFrame % 5 === 0){
-      this.frame < 5 ? this.frame++ : this.frame = 0
+      this.frame++
     }
   }
 

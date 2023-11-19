@@ -20,11 +20,14 @@ window.addEventListener('click', (e) => {
 function animate(){
   ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT)
 
-  explosions.forEach((explosion) => {
+  explosions.forEach((explosion, i) => {
     explosion.update()
     explosion.draw(ctx)
+    if(explosion.isAnimationDone()){
+      explosions.splice(i, 1)
+      i--
+    }
   })
-
   requestAnimationFrame(animate)
 }
 
