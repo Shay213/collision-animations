@@ -8,7 +8,24 @@ const CANVAS_HEIGHT = canvas.height = 700
 
 const canvasPos = canvas.getBoundingClientRect()
 
+const explosions = []
+
 window.addEventListener('click', (e) => {
-  ctx.fillStyle = 'white'
-  ctx.fillRect(e.x - canvasPos.left, e.y - canvasPos.top, 20, 20)
+  const posX = e.x - canvasPos.left
+  const posY = e.y - canvasPos.top
+  
+  explosions.push(new Explosion(posX, posY))
 })
+
+function animate(){
+  ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT)
+
+  explosions.forEach((explosion) => {
+    explosion.update()
+    explosion.draw(ctx)
+  })
+
+  requestAnimationFrame(animate)
+}
+
+animate()
