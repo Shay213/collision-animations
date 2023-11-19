@@ -5,14 +5,15 @@ export default class Explosion{
     this.width = this.spriteWidth * 0.5
     this.height = this.spriteHeight * 0.5
 
-    this.x = x - this.width * 0.5
-    this.y = y - this.height * 0.5
+    this.x = x
+    this.y = y
 
     this.img = new Image()
     this.img.src = '../assets/boom.png'
 
     this.frame = 0
     this.gameFrame = 0
+    this.angle = Math.random() * 6.2
   }
 
   isAnimationDone(){
@@ -27,6 +28,10 @@ export default class Explosion{
   }
 
   draw(ctx){
-    ctx.drawImage(this.img, this.frame * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height)
+    ctx.save()
+    ctx.translate(this.x, this.y)
+    ctx.rotate(this.angle)
+    ctx.drawImage(this.img, this.frame * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, 0 - this.width * 0.5, 0 - this.height * 0.5, this.width, this.height)
+    ctx.restore()
   }
 }
